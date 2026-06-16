@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ease Progress Ring Demo</title>
+    <link rel="stylesheet" href="../../../easemotion.css">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: var(--ease-color-bg, #f9fafb);
+        font-family: var(--ease-font-sans, system-ui, sans-serif);
+        gap: 3rem;
+        padding: 2rem;
+      }
+      .demo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+        width: 100%;
+        max-width: 800px;
+      }
+      .demo-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem;
+        background: var(--ease-color-surface, #ffffff);
+        border-radius: var(--ease-radius-lg, 1rem);
+        box-shadow: var(--ease-shadow-md, 0 4px 6px rgba(0, 0, 0, 0.1));
+      }
+      h1 {
+        color: var(--ease-color-text, #111827);
+        margin-bottom: 0;
+      }
+      p {
+        color: var(--ease-color-muted, #6b7280);
+        margin-top: 0.5rem;
+      }
+      .item-title {
+        font-weight: 500;
+        color: var(--ease-color-text, #374151);
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <h1>Ease Progress Ring</h1>
+      <p>Animated circular progress indicator using SVG & CSS Variables</p>
+    </div>
+
+    <div class="demo-grid">
+      <!-- Default (Primary) -->
+      <div class="demo-item">
+        <div
+          class="ease-progress-ring ease-progress-ring-animate"
+          style="--ease-ring-progress: 75"
+        >
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle class="ease-ring-track" cx="50" cy="50" r="40" />
+            <circle class="ease-ring-fill" cx="50" cy="50" r="40" />
+          </svg>
+          <span class="ease-ring-label">75%</span>
+        </div>
+        <span class="item-title">Primary</span>
+      </div>
+
+      <!-- Success -->
+      <div class="demo-item">
+        <div
+          class="ease-progress-ring ease-progress-ring-success ease-progress-ring-animate"
+          style="--ease-ring-progress: 100"
+        >
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle class="ease-ring-track" cx="50" cy="50" r="40" />
+            <circle class="ease-ring-fill" cx="50" cy="50" r="40" />
+          </svg>
+          <span class="ease-ring-label">100%</span>
+        </div>
+        <span class="item-title">Success</span>
+      </div>
+
+      <!-- Warning -->
+      <div class="demo-item">
+        <div
+          class="ease-progress-ring ease-progress-ring-warning ease-progress-ring-animate"
+          style="--ease-ring-progress: 45"
+        >
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle class="ease-ring-track" cx="50" cy="50" r="40" />
+            <circle class="ease-ring-fill" cx="50" cy="50" r="40" />
+          </svg>
+          <span class="ease-ring-label">45%</span>
+        </div>
+        <span class="item-title">Warning</span>
+      </div>
+
+      <!-- Danger -->
+      <div class="demo-item">
+        <div
+          class="ease-progress-ring ease-progress-ring-danger ease-progress-ring-animate"
+          style="--ease-ring-progress: 20"
+        >
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle class="ease-ring-track" cx="50" cy="50" r="40" />
+            <circle class="ease-ring-fill" cx="50" cy="50" r="40" />
+          </svg>
+          <span class="ease-ring-label">20%</span>
+        </div>
+        <span class="item-title">Danger</span>
+      </div>
+    </div>
+  </body>
+</html>

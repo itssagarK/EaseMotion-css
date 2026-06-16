@@ -1,0 +1,87 @@
+/* 
+  Ease Progress Ring
+  An SVG-based circular progress indicator with smooth stroke animation.
+*/
+
+.ease-progress-ring {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background track */
+.ease-ring-track {
+  fill: none;
+  stroke: var(--ease-color-neutral-200, #e5e7eb);
+  stroke-width: 8;
+}
+
+/* Animated fill */
+.ease-ring-fill {
+  fill: none;
+  stroke: var(--ease-color-primary, #6c63ff);
+  stroke-width: 8;
+  stroke-linecap: round;
+  /* 2 * PI * R (R=40) = 251.327 */
+  stroke-dasharray: 251.327;
+  stroke-dashoffset: calc(
+    251.327 - (251.327 * var(--ease-ring-progress, 0) / 100)
+  );
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 1s var(--ease-ease, ease);
+}
+
+/* Load animation trigger */
+.ease-progress-ring-animate .ease-ring-fill {
+  animation: ease-ring-fill-load 1s var(--ease-ease, ease) forwards;
+}
+
+@keyframes ease-ring-fill-load {
+  from {
+    stroke-dashoffset: 251.327;
+  }
+  to {
+    stroke-dashoffset: calc(
+      251.327 - (251.327 * var(--ease-ring-progress, 0) / 100)
+    );
+  }
+}
+
+/* Color Variants */
+.ease-progress-ring-success .ease-ring-fill {
+  stroke: var(--ease-color-success, #22c55e);
+}
+
+.ease-progress-ring-danger .ease-ring-fill {
+  stroke: var(--ease-color-danger, #ef4444);
+}
+
+.ease-progress-ring-warning .ease-ring-fill {
+  stroke: var(--ease-color-warning, #f59e0b);
+}
+
+/* Center Label */
+.ease-ring-label {
+  position: absolute;
+  font-family: var(--ease-font-sans, sans-serif);
+  font-size: var(--ease-text-lg, 1.125rem);
+  font-weight: 600;
+  color: var(--ease-color-text, #1e293b);
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .ease-ring-fill {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Dark mode adjustments if variables aren't used */
+@media (prefers-color-scheme: dark) {
+  .ease-ring-track {
+    stroke: var(--ease-color-neutral-700, #334155);
+  }
+}
