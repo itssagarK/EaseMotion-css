@@ -1464,4 +1464,10 @@
   .ease-contain-style { contain: style !important; }
   
   .ease-contain-layout-paint { contain: layout paint !important; }
+
+/* ── Issue #15204: Core Changes — Add Contrast Filter Utility Classes ── */
+  .ease-filter-contrast     { filter: contrast(100%) !important; }
+  .ease-filter-contrast-50  { filter: contrast(50%) !important; }
+  .ease-filter-contrast-150 { filter: contrast(150%) !important; }
 }
+

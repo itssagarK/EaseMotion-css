@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrast Filter Utility Sandbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #f1f5f9; padding: 60px 20px; font-family: system-ui, sans-serif; display: flex; flex-direction: column; align-items: center; gap: 2rem; min-height: 80vh;">
+
+  <h2>Contrast Utility Showcase</h2>
+  
+  <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+    <!-- Normal -->
+    <div class="showcase-card ease-filter-contrast">
+      <div class="image-box normal">Normal Contrast</div>
+      <div class="info-box">
+        <h3>Standard (100%)</h3>
+        <p>This card utilizes <code>.ease-filter-contrast</code> for standard visual balance.</p>
+      </div>
+    </div>
+
+    <!-- Low Contrast -->
+    <div class="showcase-card ease-filter-contrast-50">
+      <div class="image-box low">Low Contrast (50%)</div>
+      <div class="info-box">
+        <h3>Muted (50%)</h3>
+        <p>This card utilizes <code>.ease-filter-contrast-50</code> for a soft, low-contrast appearance.</p>
+      </div>
+    </div>
+
+    <!-- High Contrast -->
+    <div class="showcase-card ease-filter-contrast-150">
+      <div class="image-box high">High Contrast (150%)</div>
+      <div class="info-box">
+        <h3>Vivid (150%)</h3>
+        <p>This card utilizes <code>.ease-filter-contrast-150</code> for intense, high-contrast clarity.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
