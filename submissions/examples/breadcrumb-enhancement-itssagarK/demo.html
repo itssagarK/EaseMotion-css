@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Breadcrumb Component - Showcase</title>
+  <!-- Framework CSS -->
+  <link rel="stylesheet" href="../../../easemotion.css">
+  <!-- Local Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="showcase-container">
+    <header>
+      <span class="badge">Component</span>
+      <h1>Enhanced Breadcrumb Navigation</h1>
+      <p>A functional and highly structured navigation component supporting collapsible states, active path links, icon tags, dropdown expansion, and multiple separators.</p>
+    </header>
+
+    <!-- Section 1: Separator Variants -->
+    <section class="showcase-section">
+      <h2 class="section-title">Separator Variants</h2>
+      <div class="demo-card">
+        <div class="variant-row">
+          <span class="variant-label">Chevron (Default)</span>
+          <nav aria-label="Breadcrumb" class="ease-breadcrumb ease-breadcrumb-sep-chevron">
+            <ol class="ease-breadcrumb-list">
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">Console</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">Settings</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              <li class="ease-breadcrumb-item ease-breadcrumb-current" aria-current="page">Security</li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="variant-row">
+          <span class="variant-label">Slash</span>
+          <nav aria-label="Breadcrumb" class="ease-breadcrumb ease-breadcrumb-sep-slash">
+            <ol class="ease-breadcrumb-list">
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">Files</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">Documents</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              <li class="ease-breadcrumb-item ease-breadcrumb-current" aria-current="page">Invoice.pdf</li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="variant-row">
+          <span class="variant-label">Arrow</span>
+          <nav aria-label="Breadcrumb" class="ease-breadcrumb ease-breadcrumb-sep-arrow">
+            <ol class="ease-breadcrumb-list">
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">Store</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">Electronics</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              <li class="ease-breadcrumb-item ease-breadcrumb-current" aria-current="page">Laptops</li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="variant-row">
+          <span class="variant-label">Dot</span>
+          <nav aria-label="Breadcrumb" class="ease-breadcrumb ease-breadcrumb-sep-dot">
+            <ol class="ease-breadcrumb-list">
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">Blog</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">Tech</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              <li class="ease-breadcrumb-item ease-breadcrumb-current" aria-current="page">CSS Grid Guide</li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="variant-row">
+          <span class="variant-label">Bullet</span>
+          <nav aria-label="Breadcrumb" class="ease-breadcrumb ease-breadcrumb-sep-bullet">
+            <ol class="ease-breadcrumb-list">
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">Wiki</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">History</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              <li class="ease-breadcrumb-item ease-breadcrumb-current" aria-current="page">Antiquity</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Icons & Dropdowns -->
+    <section class="showcase-section">
+      <h2 class="section-title">Icons & Dropdowns</h2>
+      <div class="demo-card">
+        <div class="variant-row">
+          <span class="variant-label">Interactive Path (Hover nodes to reveal parallel categories)</span>
+          <nav aria-label="Breadcrumb" class="ease-breadcrumb ease-breadcrumb-sep-chevron">
+            <ol class="ease-breadcrumb-list">
+              <li class="ease-breadcrumb-item">
+                <a href="#" class="ease-breadcrumb-link">
+                  <svg class="ease-breadcrumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                  </svg>
+                  Home
+                </a>
+              </li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              
+              <!-- Dropdown Trigger -->
+              <li class="ease-breadcrumb-item ease-breadcrumb-dropdown">
+                <a href="#" class="ease-breadcrumb-link">
+                  Products
+                  <svg class="ease-breadcrumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </a>
+                <ul class="ease-breadcrumb-dropdown-menu">
+                  <li><a href="#" class="ease-breadcrumb-dropdown-link">Electronics</a></li>
+                  <li><a href="#" class="ease-breadcrumb-dropdown-link">Audio Equipment</a></li>
+                  <li><a href="#" class="ease-breadcrumb-dropdown-link">Home Appliances</a></li>
+                </ul>
+              </li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+
+              <!-- Dropdown Trigger -->
+              <li class="ease-breadcrumb-item ease-breadcrumb-dropdown">
+                <a href="#" class="ease-breadcrumb-link">
+                  Audio
+                  <svg class="ease-breadcrumb-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                  </svg>
+                </a>
+                <ul class="ease-breadcrumb-dropdown-menu">
+                  <li><a href="#" class="ease-breadcrumb-dropdown-link">Headphones</a></li>
+                  <li><a href="#" class="ease-breadcrumb-dropdown-link">Bluetooth Speakers</a></li>
+                  <li><a href="#" class="ease-breadcrumb-dropdown-link">Microphones</a></li>
+                </ul>
+              </li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+
+              <li class="ease-breadcrumb-item ease-breadcrumb-current" aria-current="page">Noise Cancelling</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Collapsible Path -->
+    <section class="showcase-section">
+      <h2 class="section-title">Collapsible intermediate items</h2>
+      <div class="demo-card">
+        <div class="variant-row">
+          <span class="variant-label">Click the ellipsis (...) to expand full path</span>
+          <nav aria-label="Breadcrumb" class="ease-breadcrumb ease-breadcrumb-sep-slash">
+            <ol class="ease-breadcrumb-list" id="collapsible-trail">
+              <li class="ease-breadcrumb-item"><a href="#" class="ease-breadcrumb-link">Home</a></li>
+              <li class="ease-breadcrumb-separator" aria-hidden="true"></li>
+              
+              <!-- Hidden items & Ellipsis item -->
+              <li class="ease-breadcrumb-collapse-item" id="ellipsis-node" aria-label="Show more path">...</li>
+              
+              <!-- These items are hidden until ellipsis is clicked -->
+              <li class="ease-breadcrumb-item collapsible-item" style="display: none;"><a href="#" class="ease-breadcrumb-link">Library</a></li>
+              <li class="ease-breadcrumb-separator collapsible-item" aria-hidden="true" style="display: none;"></li>
+              <li class="ease-breadcrumb-item collapsible-item" style="display: none;"><a href="#" class="ease-breadcrumb-link">Archive</a></li>
+              <li class="ease-breadcrumb-separator collapsible-item" aria-hidden="true" style="display: none;"></li>
+              
+              <li class="ease-breadcrumb-item ease-breadcrumb-current" aria-current="page">Current Item</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Expand collapsible path
+    const ellipsis = document.getElementById('ellipsis-node');
+    const collapsibleItems = document.querySelectorAll('.collapsible-item');
+
+    ellipsis.addEventListener('click', () => {
+      // Hide ellipsis
+      ellipsis.style.display = 'none';
+      // Show intermediate items
+      collapsibleItems.forEach(item => {
+        item.style.display = 'inline-flex';
+      });
+    });
+  </script>
+</body>
+</html>
