@@ -1464,4 +1464,10 @@
   .ease-contain-style { contain: style !important; }
   
   .ease-contain-layout-paint { contain: layout paint !important; }
+
+/* ── Issue #15205: Core Changes — Add Brightness Filter Utility Classes ── */
+  .ease-filter-brightness     { filter: brightness(100%) !important; }
+  .ease-filter-brightness-50  { filter: brightness(50%) !important; }
+  .ease-filter-brightness-150 { filter: brightness(150%) !important; }
 }
+

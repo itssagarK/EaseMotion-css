@@ -1,0 +1,58 @@
+/* ============================================================
+   Brightness Filter Showcase Styles
+   ============================================================ */
+
+.ease-filter-brightness {
+  filter: brightness(100%) !important;
+}
+
+.ease-filter-brightness-50 {
+  filter: brightness(50%) !important;
+}
+
+.ease-filter-brightness-150 {
+  filter: brightness(150%) !important;
+}
+
+.showcase-card {
+  width: 280px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.image-box {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.image-box.normal { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+.image-box.low { background: linear-gradient(135deg, #10b981, #f59e0b); }
+.image-box.high { background: linear-gradient(135deg, #ec4899, #8b5cf6); }
+
+.info-box {
+  padding: 1.25rem;
+}
+
+.info-box h3 {
+  margin: 0 0 0.5rem 0;
+  color: #1e293b;
+  font-size: 1.1rem;
+}
+
+.info-box p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.5;
+}

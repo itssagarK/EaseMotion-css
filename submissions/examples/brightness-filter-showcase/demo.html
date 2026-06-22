@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brightness Filter Utility Sandbox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #f1f5f9; padding: 60px 20px; font-family: system-ui, sans-serif; display: flex; flex-direction: column; align-items: center; gap: 2rem; min-height: 80vh;">
+
+  <h2>Brightness Utility Showcase</h2>
+  
+  <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+    <!-- Normal -->
+    <div class="showcase-card ease-filter-brightness">
+      <div class="image-box normal">Normal Brightness</div>
+      <div class="info-box">
+        <h3>Standard (100%)</h3>
+        <p>This card utilizes <code>.ease-filter-brightness</code> for standard light level balance.</p>
+      </div>
+    </div>
+
+    <!-- Low Brightness -->
+    <div class="showcase-card ease-filter-brightness-50">
+      <div class="image-box low">Low Brightness (50%)</div>
+      <div class="info-box">
+        <h3>Dim (50%)</h3>
+        <p>This card utilizes <code>.ease-filter-brightness-50</code> for a dim, soft light level appearance.</p>
+      </div>
+    </div>
+
+    <!-- High Brightness -->
+    <div class="showcase-card ease-filter-brightness-150">
+      <div class="image-box high">High Brightness (150%)</div>
+      <div class="info-box">
+        <h3>Vibrant (150%)</h3>
+        <p>This card utilizes <code>.ease-filter-brightness-150</code> for high brightness clarity.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
