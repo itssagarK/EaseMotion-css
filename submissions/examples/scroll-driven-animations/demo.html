@@ -3,23 +3,165 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scroll Driven Animations - EaseMotion CSS</title>
-  <link rel="stylesheet" href="../../../core/animations.css">
+  <title>CSS Scroll-Driven Animations Demo — EaseMotion</title>
+  <!-- Google Fonts Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="demo-wrapper">
-    <h1>Scroll Driven Animations</h1>
-    <div class="scroll-stage">
-      <div class="progress-track">
-        <div class="progress-bar"></div>
-      </div>
-      <p class="scroll-hint">Scroll down to drive the animation</p>
-      <div class="scroll-spacer"></div>
-      <div class="animated-reveal">Revealed by scroll!</div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="ease-scroll-progress-bar ease-scroll-fallback"></div>
+
+  <!-- Hero Header -->
+  <header>
+    <div class="hero-glow"></div>
+    <span class="badge">Modern CSS Feature</span>
+    <h1>Scroll-Driven Animations</h1>
+    <p class="subtitle">
+      Native CSS-driven timelines linked to scroll progress and element visibility in the viewport. High-performance rendering, zero JavaScript required.
+    </p>
+
+    <!-- Support Warning (Visible only in non-supporting browsers) -->
+    <div class="support-warning">
+      ⚠️ <strong>Browser Note:</strong> Your browser does not support native CSS Scroll-Driven Animations yet. 
+      The elements below are using the <code>.ease-scroll-fallback</code> classes to degrade gracefully using standard time-based entrance animations.
     </div>
-    <p class="description">The progress bar animates based on scroll position using animation-timeline.</p>
+
+    <div class="scroll-indicator">
+      <span>Scroll Down to Explore</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- Interactive Demo Sections -->
+  <div class="demo-container">
+
+    <!-- 1. Scroll Reveal (Fade-in-up) -->
+    <section>
+      <span class="section-label">01 / View Scroll Reveal</span>
+      <h2 class="section-title">Fade-In Up on View</h2>
+      
+      <div class="grid">
+        <div class="glass-card ease-scroll-reveal ease-scroll-fallback">
+          <div class="visual-box">Card 1</div>
+          <h3>Reveals on Entry</h3>
+          <p>
+            This card fades in and moves upward as it enters the viewport. Try scrolling up and down to see the transition follow your scroll precisely.
+          </p>
+        </div>
+
+        <div class="glass-card ease-scroll-reveal ease-scroll-fallback" style="--ease-scroll-reveal-range: entry 10% cover 50%;">
+          <div class="visual-box" style="background: linear-gradient(135deg, #a09af8 0%, var(--ease-primary) 100%);">Card 2</div>
+          <h3>Custom Animation Range</h3>
+          <p>
+            You can configure the active range utilizing a CSS custom property: <code>--ease-scroll-reveal-range</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Scroll Parallax -->
+    <section>
+      <span class="section-label">02 / Scroll Parallax</span>
+      <h2 class="section-title">Parallax Scroll Effect</h2>
+      
+      <div class="visual-parallax-container">
+        <!-- Parallax Background Image -->
+        <div class="visual-parallax-image ease-scroll-parallax"></div>
+        <div class="parallax-text">Smooth Parallax Depth</div>
+      </div>
+      <p style="margin-top: 1.5rem; color: var(--ease-text-muted); line-height: 1.6; text-align: center;">
+        The background image moves at a slightly slower rate than the scroll rate, creating a premium depth effect.
+      </p>
+    </section>
+
+    <!-- 3. Scroll Zoom -->
+    <section>
+      <span class="section-label">03 / View Scroll Zoom</span>
+      <h2 class="section-title">Interactive Zoom-In</h2>
+      
+      <div class="grid">
+        <div class="glass-card ease-scroll-zoom ease-scroll-fallback">
+          <div class="visual-box">Zoom In</div>
+          <h3>Scale Transition</h3>
+          <p>
+            An elegant zoom-in scaling transition that responds to the viewport entry progress.
+          </p>
+        </div>
+
+        <div class="glass-card ease-scroll-zoom ease-scroll-fallback" style="--ease-scroll-zoom-start: 0.7;">
+          <div class="visual-box" style="background: linear-gradient(135deg, #a09af8 0%, var(--ease-primary) 100%);">Deep Zoom</div>
+          <h3>Custom Start Scale</h3>
+          <p>
+            Control the starting scale using <code>--ease-scroll-zoom-start</code> (currently set to 0.7).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Scroll Blur -->
+    <section>
+      <span class="section-label">04 / View Scroll Blur</span>
+      <h2 class="section-title">Unblur as Element Enters</h2>
+      
+      <div class="grid">
+        <div class="glass-card ease-scroll-blur ease-scroll-fallback">
+          <div class="visual-box">Blur Unveil</div>
+          <h3>De-focus Transition</h3>
+          <p>
+            Unblurs smoothly as the card is scrolled up. Excellent for drawing immediate focus to content.
+          </p>
+        </div>
+
+        <div class="glass-card ease-scroll-blur ease-scroll-fallback" style="--ease-scroll-blur-amount: 24px;">
+          <div class="visual-box" style="background: linear-gradient(135deg, #a09af8 0%, var(--ease-primary) 100%);">Heavy Blur</div>
+          <h3>Custom Blur Amount</h3>
+          <p>
+            Adjust the starting blur intensity using the <code>--ease-scroll-blur-amount</code> custom variable.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. View Reveal -->
+    <section>
+      <span class="section-label">05 / Simple View Reveal</span>
+      <h2 class="section-title">Timeline Reveal</h2>
+      
+      <div class="grid">
+        <div class="glass-card ease-view-reveal ease-scroll-fallback">
+          <div class="visual-box">View Reveal</div>
+          <h3>Standard Reveal</h3>
+          <p>
+            A lightweight, native view-timeline transition that fades the element in relative to scroll boundaries.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. View Slide In -->
+    <section>
+      <span class="section-label">06 / View Slide In</span>
+      <h2 class="section-title">Slide In From Side</h2>
+      
+      <div class="grid">
+        <div class="glass-card ease-view-slide-in ease-scroll-fallback">
+          <div class="visual-box">Slide In</div>
+          <h3>Horizontal Entrance</h3>
+          <p>
+            Slides horizontally into position as you scroll down.
+          </p>
+        </div>
+      </div>
+    </section>
+
   </div>
-  <script src="script.js"></script>
+
 </body>
 </html>

@@ -1,78 +1,427 @@
-body {
-  font-family: sans-serif;
-  margin: 0;
-  background: #0f0f0f;
-  color: white;
+/* ============================================================
+   EaseMotion CSS — scroll-driven.css
+   Scroll-Driven and View-Driven Animation Utilities
+   ============================================================ */
+
+/* ── Custom Properties & Tokens ───────────────────────────── */
+:root {
+  --ease-primary: #6c63ff;
+  --ease-primary-rgb: 108, 99, 255;
+  --ease-primary-light: #a09af8;
+  --ease-primary-dark: #4b44cc;
+  --ease-bg-dark: #0b0f19;
+  --ease-card-bg: rgba(17, 24, 39, 0.7);
+  --ease-border-color: rgba(255, 255, 255, 0.08);
+  --ease-text-light: #f8fafc;
+  --ease-text-muted: #94a3b8;
+  --ease-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-speed-slow: 0.8s;
+  --ease-speed-medium: 0.5s;
+  --ease-z-toast: 9999;
 }
 
-.demo-wrapper {
+/* ── Keyframe Definitions ─────────────────────────────────── */
+@keyframes ease-kf-scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ease-kf-scroll-parallax {
+  from {
+    transform: translateY(60px);
+  }
+  to {
+    transform: translateY(-60px);
+  }
+}
+
+@keyframes ease-kf-scroll-zoom {
+  from {
+    transform: scale(0.82);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes ease-kf-scroll-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ease-kf-scroll-blur {
+  from {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes ease-kf-view-reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ease-kf-view-slide-in {
+  from {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ── Utility Classes ───────────────────────────────────────── */
+
+/* Scroll-Driven Animations - Binds animations to scroll position when supported */
+@supports (animation-timeline: view()) {
+  .ease-scroll-reveal {
+    animation: ease-kf-scroll-reveal linear both;
+    animation-timeline: view();
+    animation-range: var(--ease-scroll-reveal-range, entry 0% cover 40%);
+  }
+
+  .ease-scroll-parallax {
+    animation: ease-kf-scroll-parallax linear both;
+    animation-timeline: view();
+    animation-range: var(--ease-scroll-parallax-range, cover 0% cover 100%);
+  }
+
+  .ease-scroll-zoom {
+    animation: ease-kf-scroll-zoom linear both;
+    animation-timeline: view();
+    animation-range: var(--ease-scroll-zoom-range, entry 0% cover 40%);
+  }
+
+  .ease-scroll-blur {
+    animation: ease-kf-scroll-blur linear both;
+    animation-timeline: view();
+    animation-range: var(--ease-scroll-blur-range, entry 0% cover 40%);
+  }
+
+  .ease-view-reveal {
+    animation: ease-kf-view-reveal linear both;
+    animation-timeline: view();
+    animation-range: var(--ease-view-reveal-range, entry 0% entry 100%);
+  }
+
+  .ease-view-slide-in {
+    animation: ease-kf-view-slide-in linear both;
+    animation-timeline: view();
+    animation-range: var(--ease-view-slide-in-range, entry 0% cover 45%);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .ease-scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--ease-scroll-progress-height, 4px);
+    background: var(--ease-scroll-progress-bg, var(--ease-primary));
+    animation: ease-kf-scroll-grow linear both;
+    animation-timeline: scroll(root);
+    transform-origin: left;
+    z-index: var(--ease-scroll-progress-z-index, var(--ease-z-toast));
+  }
+}
+
+/* ── Fallback Classes for Non-Supporting Browsers ─────────── */
+@supports not (animation-timeline: scroll()) {
+  .ease-scroll-reveal.ease-scroll-fallback {
+    animation: ease-kf-scroll-reveal var(--ease-scroll-fallback-duration, var(--ease-speed-slow)) var(--ease-ease) forwards;
+  }
+
+  .ease-scroll-zoom.ease-scroll-fallback {
+    animation: ease-kf-scroll-zoom var(--ease-scroll-fallback-duration, var(--ease-speed-slow)) var(--ease-ease) forwards;
+  }
+
+  .ease-scroll-blur.ease-scroll-fallback {
+    animation: ease-kf-scroll-blur var(--ease-scroll-fallback-duration, var(--ease-speed-slow)) var(--ease-ease) forwards;
+  }
+
+  .ease-view-reveal.ease-scroll-fallback {
+    animation: ease-kf-view-reveal var(--ease-scroll-fallback-duration, var(--ease-speed-slow)) var(--ease-ease) forwards;
+  }
+
+  .ease-view-slide-in.ease-scroll-fallback {
+    animation: ease-kf-view-slide-in var(--ease-scroll-fallback-duration, var(--ease-speed-slow)) var(--ease-ease) forwards;
+  }
+
+  .ease-scroll-progress-bar.ease-scroll-fallback {
+    width: 100%;
+    transform: scaleX(1);
+    box-shadow: 0 2px 10px rgba(var(--ease-primary-rgb), 0.3);
+  }
+}
+
+/* ── Reduced Motion Accessibility ────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .ease-scroll-reveal,
+  .ease-scroll-parallax,
+  .ease-scroll-zoom,
+  .ease-scroll-blur,
+  .ease-view-reveal,
+  .ease-view-slide-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  
+  .ease-scroll-progress-bar {
+    animation: none !important;
+    transform: scaleX(1) !important;
+  }
+}
+
+/* ── Demo Page Styling (Aesthetics) ───────────────────────── */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--ease-bg-dark);
+  color: var(--ease-text-light);
+  overflow-x: hidden;
+}
+
+header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   text-align: center;
   padding: 2rem;
+  background: radial-gradient(circle at center, rgba(108, 99, 255, 0.12) 0%, transparent 65%);
 }
 
-.scroll-stage {
-  max-width: 500px;
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background: var(--ease-primary);
+  filter: blur(150px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #ffffff 40%, var(--ease-primary-light) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 2;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--ease-text-muted);
+  max-width: 600px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  z-index: 2;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--ease-text-muted);
+  font-size: 0.875rem;
+  gap: 0.5rem;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.demo-container {
+  max-width: 1100px;
   margin: 0 auto;
-  position: relative;
+  padding: 4rem 2rem;
 }
 
-.progress-track {
-  position: fixed;
+section {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 8rem;
+}
+
+.section-label {
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ease-primary-light);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 2.5rem;
+}
+
+/* Glass Card Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.glass-card {
+  background: var(--ease-card-bg);
+  border: 1px solid var(--ease-border-color);
+  border-radius: 16px;
+  padding: 2.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
-  background: #333;
-  z-index: 100;
-}
-
-.progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, #6366f1, #ec4899);
-  animation: scaleProgress linear;
-  animation-timeline: scroll(root);
-  transform-origin: left;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+  pointer-events: none;
 }
 
-@keyframes scaleProgress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-
-.scroll-hint {
-  color: #666;
-  margin: 2rem 0;
-}
-
-.scroll-spacer {
-  height: 100vh;
-}
-
-.animated-reveal {
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.glass-card h3 {
   font-size: 1.5rem;
-  font-weight: bold;
-  background: #1a1a2e;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.glass-card p {
+  color: var(--ease-text-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Visual components for interactive scrolling demo */
+.visual-box {
+  width: 100%;
+  height: 160px;
   border-radius: 12px;
-  border: 1px solid #333;
-  animation: fadeInBox linear;
-  animation-timeline: view();
-  animation-range: entry 0% entry 100%;
+  background: linear-gradient(135deg, var(--ease-primary) 0%, var(--ease-primary-dark) 100%);
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.25);
+  overflow: hidden;
+  position: relative;
 }
 
-@keyframes fadeInBox {
-  from { opacity: 0; transform: translateY(50px); }
-  to { opacity: 1; transform: translateY(0); }
+.visual-parallax-container {
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 16px;
+  border: 1px solid var(--ease-border-color);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .progress-bar,
-  .animated-reveal {
-    animation: none;
+.visual-parallax-image {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600"><rect width="800" height="600" fill="%230f172a"/><circle cx="200" cy="200" r="100" fill="%236c63ff" opacity="0.4"/><circle cx="600" cy="400" r="150" fill="%234b44cc" opacity="0.3"/><path d="M 0 500 Q 200 400 400 500 T 800 500 L 800 600 L 0 600 Z" fill="%231e293b"/></svg>') center/cover no-repeat;
+}
+
+.parallax-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(108, 99, 255, 0.15);
+  color: var(--ease-primary-light);
+  margin-bottom: 1rem;
+}
+
+/* Utility to support manual styling toggling or features */
+.support-warning {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 8px;
+  color: #f87171;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  display: none;
+}
+
+@supports not (animation-timeline: scroll()) {
+  .support-warning {
+    display: block;
   }
-  .progress-bar { transform: scaleX(0); }
-  .animated-reveal { opacity: 1; transform: none; }
 }
