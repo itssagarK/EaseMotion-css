@@ -130,6 +130,7 @@
     // Update underline width and position
     underline.style.width = labelWidth + 'px';
     underline.style.left = labelLeft + 'px';
+    underline.style.transform = 'none';
   }
 
   // Initialize when DOM is ready
