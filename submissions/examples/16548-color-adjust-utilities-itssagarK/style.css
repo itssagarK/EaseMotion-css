@@ -1,0 +1,252 @@
+/* ============================================================
+   EaseMotion CSS — submissions/examples/16548-color-adjust-utilities-itssagarK/style.css
+   Color-Adjust Utility Classes & Interactive Print Preview Demo
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Issue #16548: CSS Color-Adjust Utility Classes ── */
+.ease-color-adjust-economy {
+  -webkit-print-color-adjust: economy !important;
+  print-color-adjust: economy !important;
+}
+
+.ease-color-adjust-exact {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+.ease-print-color-adjust-economy {
+  -webkit-print-color-adjust: economy !important;
+  print-color-adjust: economy !important;
+}
+
+.ease-print-color-adjust-exact {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+/* ── Reset & Theme Variables ── */
+:root {
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-border: #334155;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #94a3b8;
+  
+  --color-primary: #3b82f6;
+  --color-primary-glow: rgba(59, 130, 246, 0.15);
+  --color-success: #10b981;
+  --color-success-glow: rgba(16, 185, 129, 0.15);
+  
+  --font-sans: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-lg: 16px;
+  --radius-md: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.badge-wrapper {
+  display: inline-block;
+  background: var(--color-primary-glow);
+  border: 1px solid var(--color-primary);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  margin-bottom: 12px;
+}
+
+.badge-text {
+  color: #93c5fd;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+h1 {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, #fff 40%, #93c5fd 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Comparison Cards Grid ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.compare-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  background: var(--color-bg-secondary);
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.class-badge {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  background: rgba(0, 0, 0, 0.25);
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.card-body {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Graphic Blocks for Testing Printing Adjustments */
+.sample-gradient-box {
+  height: 120px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.2);
+}
+
+.sample-image-box {
+  height: 120px;
+  border-radius: var(--radius-md);
+  background-color: #8b5cf6;
+  background-image: radial-gradient(circle at 20% 30%, #ec4899 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, #3b82f6 0%, transparent 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Interactive Print Button ── */
+.print-action-bar {
+  text-align: center;
+}
+
+.btn {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary-glow);
+  color: #93c5fd;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn:hover {
+  background: var(--color-primary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px var(--color-primary-glow);
+}
+
+/* ── Print Media Simulator Styles ── */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+    padding: 0;
+  }
+
+  h1 {
+    background: none;
+    -webkit-text-fill-color: #000;
+    color: #000;
+  }
+
+  .print-action-bar {
+    display: none;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .compare-card {
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #000;
+  }
+
+  .card-header {
+    background: #f1f5f9;
+    border-bottom: 1px solid #ccc;
+  }
+}

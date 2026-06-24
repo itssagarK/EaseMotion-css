@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Color-Adjust Utilities — EaseMotion CSS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <div class="badge-wrapper">
+        <span class="badge-text">GSSoC Submission #16548</span>
+      </div>
+      <h1>Color-Adjust Utilities</h1>
+      <p class="subtitle">
+        Control background colors, images, and border rendering styles when rendering documents to high-contrast screens or printers.
+      </p>
+    </header>
+
+    <main>
+      <div class="cards-grid">
+        <!-- Card 1: Economy -->
+        <div class="compare-card ease-color-adjust-economy">
+          <div class="card-header">
+            <span class="card-title">Economy Mode (Ink Saver)</span>
+            <br>
+            <span class="class-badge">.ease-color-adjust-economy</span>
+          </div>
+          <div class="card-body">
+            <div class="sample-gradient-box">
+              Linear Gradient
+            </div>
+            <p class="card-desc">
+              The browser is allowed to optimize or strip colors and background gradients on printers to conserve ink/toner. Gradient backgrounds might turn white or transparent.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Exact -->
+        <div class="compare-card ease-color-adjust-exact">
+          <div class="card-header">
+            <span class="card-title">Exact Mode (High Fidelity)</span>
+            <br>
+            <span class="class-badge">.ease-color-adjust-exact</span>
+          </div>
+          <div class="card-body">
+            <div class="sample-image-box">
+              Complex Radial Graphic
+            </div>
+            <p class="card-desc">
+              Forces the browser to print and render colors, backgrounds, and images exactly as defined in the style. Essential for charts, maps, dashboards, and visual portfolios.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="print-action-bar">
+        <button onclick="window.print()" class="btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+          Open Print Preview to Compare
+        </button>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
