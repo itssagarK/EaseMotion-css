@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Transform-Origin Utilities — EaseMotion CSS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <div class="badge-wrapper">
+        <span class="badge-text">GSSoC Submission #16547</span>
+      </div>
+      <h1>Transform-Origin Utilities</h1>
+      <p class="subtitle">
+        Declaratively configure the pivot/origin point for 2D and 3D CSS transformations matching 9 standard directions.
+      </p>
+    </header>
+
+    <main>
+      <div class="sandbox-layout">
+        <!-- Panel 1: The Visualizer -->
+        <div class="sandbox-panel">
+          <div class="panel-header">
+            <h2>Interactive Pivot Canvas</h2>
+            <p>Observe how the spin rotation center shifts based on the selected origin.</p>
+          </div>
+          
+          <div class="rotation-area">
+            <div id="rotating-card" class="rotating-card ease-transform-origin-center">
+              <span>R-CARD</span>
+              <small style="font-size: 0.75rem; font-weight: normal; margin-top: 4px; opacity: 0.8;">Spinning</small>
+              
+              <!-- Visual Indicator Dot tracking pivot point -->
+              <div id="origin-dot" class="origin-dot origin-dot-center"></div>
+            </div>
+          </div>
+
+          <div style="text-align: center;">
+            <span id="active-badge" class="badge-display">
+              class: .ease-transform-origin-center
+            </span>
+          </div>
+        </div>
+
+        <!-- Panel 2: The Selector -->
+        <div class="sandbox-panel" style="justify-content: center; gap: 2rem;">
+          <div class="panel-header" style="text-align: center;">
+            <h2>Select Origin Point</h2>
+            <p>Click any point in the grid below to update the card's transform pivot.</p>
+          </div>
+
+          <div class="origin-selector-grid">
+            <button class="selector-btn" data-point="top-left">Top Left</button>
+            <button class="selector-btn" data-point="top">Top</button>
+            <button class="selector-btn" data-point="top-right">Top Right</button>
+            
+            <button class="selector-btn" data-point="left">Left</button>
+            <button class="selector-btn btn-active" data-point="center">Center</button>
+            <button class="selector-btn" data-point="right">Right</button>
+            
+            <button class="selector-btn" data-point="bottom-left">Bottom Left</button>
+            <button class="selector-btn" data-point="bottom">Bottom</button>
+            <button class="selector-btn" data-point="bottom-right">Bottom Right</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const card = document.getElementById('rotating-card');
+    const dot = document.getElementById('origin-dot');
+    const activeBadge = document.getElementById('active-badge');
+    const buttons = document.querySelectorAll('.selector-btn');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle active styling
+        buttons.forEach(b => b.classList.remove('btn-active'));
+        btn.classList.add('btn-active');
+
+        const point = btn.getAttribute('data-point');
+
+        // Remove all previous ease-transform-origin classes
+        card.className = "rotating-card";
+
+        // Add the target class
+        const targetClass = `ease-transform-origin-${point}`;
+        card.classList.add(targetClass);
+
+        // Update dot indicator position classes
+        dot.className = "origin-dot";
+        dot.classList.add(`origin-dot-${point}`);
+
+        // Update badge text
+        activeBadge.textContent = `class: .${targetClass}`;
+      });
+    });
+  </script>
+</body>
+</html>
