@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtualized List Skeleton Loader - EaseMotion CSS</title>
+  
+  <!-- Link to EaseMotion CSS core -->
+  <link rel="stylesheet" href="../../../core/animations.css">
+  <!-- Google Fonts for Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Link to local style.css -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="demo-wrapper">
+    <header class="header">
+      <span class="badge">Performance component</span>
+      <h1>ease-virtual-list-skeleton</h1>
+      <p class="description">
+        A skeleton placeholder list designed for virtualized tables or feeds. Features varied row widths, staggered entrance animations, and a loading shimmer that fades out once live data arrives.
+      </p>
+      
+      <!-- Interactive Controller -->
+      <div class="controls">
+        <button id="trigger-load" class="ctrl-btn">
+          <span>Simulate Load Data</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="list-container">
+      
+      <!-- SKELETON STATE (Active by default) -->
+      <div id="skeleton-view" class="skeleton-list">
+        <!-- Row 1 -->
+        <div class="skeleton-row">
+          <div class="skeleton-avatar ease-shimmer"></div>
+          <div class="skeleton-info">
+            <div class="skeleton-line title ease-shimmer" style="width: 40%;"></div>
+            <div class="skeleton-line subtitle ease-shimmer" style="width: 85%;"></div>
+          </div>
+          <div class="skeleton-action ease-shimmer"></div>
+        </div>
+        <!-- Row 2 -->
+        <div class="skeleton-row">
+          <div class="skeleton-avatar ease-shimmer"></div>
+          <div class="skeleton-info">
+            <div class="skeleton-line title ease-shimmer" style="width: 30%;"></div>
+            <div class="skeleton-line subtitle ease-shimmer" style="width: 92%;"></div>
+          </div>
+          <div class="skeleton-action ease-shimmer"></div>
+        </div>
+        <!-- Row 3 -->
+        <div class="skeleton-row">
+          <div class="skeleton-avatar ease-shimmer"></div>
+          <div class="skeleton-info">
+            <div class="skeleton-line title ease-shimmer" style="width: 50%;"></div>
+            <div class="skeleton-line subtitle ease-shimmer" style="width: 78%;"></div>
+          </div>
+          <div class="skeleton-action ease-shimmer"></div>
+        </div>
+        <!-- Row 4 -->
+        <div class="skeleton-row">
+          <div class="skeleton-avatar ease-shimmer"></div>
+          <div class="skeleton-info">
+            <div class="skeleton-line title ease-shimmer" style="width: 45%;"></div>
+            <div class="skeleton-line subtitle ease-shimmer" style="width: 95%;"></div>
+          </div>
+          <div class="skeleton-action ease-shimmer"></div>
+        </div>
+        <!-- Row 5 -->
+        <div class="skeleton-row">
+          <div class="skeleton-avatar ease-shimmer"></div>
+          <div class="skeleton-info">
+            <div class="skeleton-line title ease-shimmer" style="width: 35%;"></div>
+            <div class="skeleton-line subtitle ease-shimmer" style="width: 88%;"></div>
+          </div>
+          <div class="skeleton-action ease-shimmer"></div>
+        </div>
+      </div>
+
+      <!-- REAL CONTENT STATE (Hidden by default) -->
+      <div id="content-view" class="real-content-list hidden">
+        <!-- Item 1 -->
+        <div class="content-item">
+          <img class="avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&fit=crop&q=80" alt="Avatar">
+          <div class="info">
+            <h4>Sarah Jenkins</h4>
+            <p>Senior Frontend Architect — Designing premium micro-interaction specs.</p>
+          </div>
+          <button class="action-btn">View Profile</button>
+        </div>
+        <!-- Item 2 -->
+        <div class="content-item">
+          <img class="avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&fit=crop&q=80" alt="Avatar">
+          <div class="info">
+            <h4>Marcus Vance</h4>
+            <p>Platform Infrastructure — Optimized the virtualized DOM node layers.</p>
+          </div>
+          <button class="action-btn">View Profile</button>
+        </div>
+        <!-- Item 3 -->
+        <div class="content-item">
+          <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&fit=crop&q=80" alt="Avatar">
+          <div class="info">
+            <h4>Elena Rostova</h4>
+            <p>Motion Designer — Polishing custom cubic-bezier transitions.</p>
+          </div>
+          <button class="action-btn">View Profile</button>
+        </div>
+        <!-- Item 4 -->
+        <div class="content-item">
+          <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&fit=crop&q=80" alt="Avatar">
+          <div class="info">
+            <h4>David K.</h4>
+            <p>Security Lead — Standardized sandbox workflows and API tokens.</p>
+          </div>
+          <button class="action-btn">View Profile</button>
+        </div>
+        <!-- Item 5 -->
+        <div class="content-item">
+          <img class="avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&fit=crop&q=80" alt="Avatar">
+          <div class="info">
+            <h4>Dr. Evelyn Reed</h4>
+            <p>Head of DevRel — Maintaining community standards and issue boards.</p>
+          </div>
+          <button class="action-btn">View Profile</button>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <p>Part of <a href="https://github.com/SAPTARSHI-coder/EaseMotion-css" target="_blank">EaseMotion CSS</a> library.</p>
+    </footer>
+  </div>
+
+  <!-- Interactivity Script for Simulation -->
+  <script>
+    const triggerBtn = document.getElementById('trigger-load');
+    const skeletonView = document.getElementById('skeleton-view');
+    const contentView = document.getElementById('content-view');
+
+    triggerBtn.addEventListener('click', () => {
+      // 1. Reset states
+      triggerBtn.disabled = true;
+      contentView.classList.add('hidden');
+      contentView.classList.remove('ease-fade-in');
+      skeletonView.classList.remove('hidden');
+      skeletonView.classList.remove('ease-fade-out');
+      
+      // Force re-flow of skeletons to retrigger animations
+      const rows = skeletonView.querySelectorAll('.skeleton-row');
+      rows.forEach(row => {
+        row.style.animation = 'none';
+        row.offsetHeight; /* trigger reflow */
+        row.style.animation = '';
+      });
+
+      // 2. Wait 2 seconds (simulating data fetch)
+      setTimeout(() => {
+        // Fade out skeleton
+        skeletonView.classList.add('ease-fade-out');
+        
+        // Wait for fade out animation to finish
+        setTimeout(() => {
+          skeletonView.classList.add('hidden');
+          
+          // Fade in content
+          contentView.classList.remove('hidden');
+          contentView.classList.add('ease-fade-in');
+          triggerBtn.disabled = false;
+        }, 500); // match CSS fade-out duration
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
