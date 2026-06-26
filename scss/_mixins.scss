@@ -50,3 +50,46 @@
 @mixin zoom-out($duration: $duration-normal, $easing: $ease-in-cubic, $delay: $delay-none, $fill: $fill-both) {
   @include animate(ease-kf-zoom-out, $duration, $easing, $delay, $fill);
 }
+
+// --- Dot Loader Mixin ---
+@mixin dot-loader(
+  $dot-size: 10px,
+  $dot-color: var(--ease-color-primary, #6366f1),
+  $dot-spacing: 6px,
+  $dot-count: 3,
+  $animation-duration: 1.2s,
+  $animation-delay-step: 0.15s
+) {
+  display: inline-flex;
+  align-items: center;
+  gap: $dot-spacing;
+
+  .ease-dot-loader-item {
+    width: $dot-size;
+    height: $dot-size;
+    background-color: $dot-color;
+    border-radius: 50%;
+    
+    // Keyframe animation utilizing base configurations
+    animation: ease-kf-dot-loader-anim $animation-duration infinite ease-in-out;
+
+    @for $i from 1 through $dot-count {
+      &:nth-child(#{$i}) {
+        animation-delay: ($i - 1) * $animation-delay-step;
+      }
+    }
+  }
+
+  @at-root {
+    @keyframes ease-kf-dot-loader-anim {
+      0%, 100% {
+        transform: scale(0.3);
+        opacity: 0.35;
+      }
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  }
+}
