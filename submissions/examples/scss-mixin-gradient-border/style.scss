@@ -1,0 +1,151 @@
+/* ==========================================================================
+   EaseMotion CSS - SCSS Gradient Border Showcase
+   Sass Source File
+   ========================================================================== */
+
+// 1. Load the mixins module
+@use '../../../scss/mixins';
+
+// 2. Define theme colors
+:root {
+  --page-bg: #0b0f19;
+  --page-text: #f1f5f9;
+  --card-bg: #111827;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --heading-color: #ffffff;
+}
+
+// 3. Layout Styles
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--page-bg);
+  color: var(--page-text);
+  min-height: 100vh;
+}
+
+.showcase-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.header-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-subtitle {
+  font-size: 1.125rem;
+  opacity: 0.85;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+// 4. Mixin implementations
+.gradient-card-default {
+  @include mixins.gradient-border-animation($background-color: var(--card-bg));
+  padding: 2.25rem 2rem;
+}
+
+.gradient-card-thick {
+  @include mixins.gradient-border-animation(
+    $border-width: 4px,
+    $gradient: conic-gradient(#f59e0b, #ef4444, #f59e0b), // Amber to Red
+    $border-radius: 20px,
+    $animation-duration: 8s,
+    $background-color: var(--card-bg)
+  );
+  padding: 2.25rem 2rem;
+}
+
+.gradient-card-neon {
+  @include mixins.gradient-border-animation(
+    $border-width: 2px,
+    $gradient: conic-gradient(#38bdf8, #a78bfa, #f472b6, #38bdf8), // Cyan-Purple-Pink
+    $border-radius: 8px,
+    $animation-duration: 2.5s,
+    $background-color: var(--card-bg)
+  );
+  padding: 2.25rem 2rem;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+
+.action-btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #a78bfa;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+code {
+  font-family: monospace;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}

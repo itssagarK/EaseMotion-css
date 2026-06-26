@@ -50,3 +50,60 @@
 @mixin zoom-out($duration: $duration-normal, $easing: $ease-in-cubic, $delay: $delay-none, $fill: $fill-both) {
   @include animate(ease-kf-zoom-out, $duration, $easing, $delay, $fill);
 }
+
+// --- Gradient Border Animation Mixin ---
+@mixin gradient-border-animation(
+  $border-width: 2px,
+  $gradient: conic-gradient(#6366f1, #10b981, #3b82f6, #6366f1),
+  $border-radius: 12px,
+  $animation-duration: 4s,
+  $background-color: var(--ease-color-surface, #ffffff)
+) {
+  position: relative;
+  overflow: hidden;
+  border-radius: $border-radius;
+  z-index: 0;
+
+  // Background rotating gradient layer
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: $gradient;
+    animation: ease-kf-gradient-border-rotate $animation-duration linear infinite;
+  }
+
+  // Foreground mask layer leaving the border outline visible
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: $border-width;
+    left: $border-width;
+    right: $border-width;
+    bottom: $border-width;
+    background-color: $background-color;
+    border-radius: calc($border-radius - $border-width);
+  }
+
+  @at-root {
+    @keyframes ease-kf-gradient-border-rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::before {
+      animation: none !important;
+    }
+  }
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EaseMotion CSS — SCSS Gradient Border Animation Showcase</title>
+  
+  <!-- Local Styles -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="showcase-wrapper">
+    <!-- Header Section -->
+    <header class="header-section">
+      <h1 class="header-title" style="font-family: 'Outfit', sans-serif;">SCSS Gradient Border Animations</h1>
+      <p class="header-subtitle">Create premium, rotating gradient borders around your cards utilizing conic gradients, element masking, and GPU-accelerated rotations.</p>
+    </header>
+
+    <!-- Cards Grid -->
+    <div class="demo-grid">
+      <!-- 1. Default Conic Gradient Card -->
+      <div class="gradient-card-default">
+        <span class="badge">Spectrum Border</span>
+        <h2 class="card-title">Cloud Deployment</h2>
+        <p class="card-desc">Standard 2px rotating gradient border showcasing the full spectrum flow. Ideal for active deployments or server status highlights.</p>
+        <button class="action-btn">Launch Console</button>
+      </div>
+
+      <!-- 2. Thick Amber Border Card -->
+      <div class="gradient-card-thick">
+        <span class="badge" style="color: #f59e0b;">Warning Flow</span>
+        <h2 class="card-title">Security Gateway</h2>
+        <p class="card-desc">Features a thick 4px border, slower 8s rotating gradient mapping amber and red, and expanded 20px rounded corners.</p>
+        <button class="action-btn">Audit Logs</button>
+      </div>
+
+      <!-- 3. Neon Spinner Card -->
+      <div class="gradient-card-neon">
+        <span class="badge" style="color: #38bdf8;">Vibrant Neon</span>
+        <h2 class="card-title">Active AI Agent</h2>
+        <p class="card-desc">Features a thin 2px border, fast 2.5s rotation, and a custom neon conic gradient mapping cyan, purple, and pink.</p>
+        <button class="action-btn">Manage Agents</button>
+      </div>
+    </div>
+
+    <!-- Technical Guide -->
+    <div class="gradient-card-default" style="border-radius: 12px; margin-top: 3rem;">
+      <h2 class="card-title">2. SCSS Architecture Integration</h2>
+      <p class="card-desc" style="margin-bottom: 2rem;">Learn how the gradient border rotating mixin uses pseudo-element overlays, masking vectors, and keyframe loops:</p>
+      
+      <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+        <!-- Code snippet 1 -->
+        <div>
+          <span style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; color: #a78bfa;">Mixin API Definition (<code>scss/_mixins.scss</code>)</span>
+          <pre style="background: rgba(255, 255, 255, 0.05); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.825rem; overflow-x: auto; margin: 0; line-height: 1.5; color: #cbd5e1;"><code>@mixin gradient-border-animation(
+  $border-width: 2px,
+  $gradient: conic-gradient(#6366f1, #10b981, #3b82f6, #6366f1),
+  $border-radius: 12px,
+  $animation-duration: 4s,
+  $background-color: var(--ease-color-surface, #ffffff)
+) {
+  position: relative;
+  overflow: hidden;
+  border-radius: $border-radius;
+  z-index: 0;
+
+  // Background rotating layer
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: $gradient;
+    animation: ease-kf-gradient-border-rotate $animation-duration linear infinite;
+  }
+
+  // Foreground masking layer
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: $border-width; left: $border-width;
+    right: $border-width; bottom: $border-width;
+    background-color: $background-color;
+    border-radius: calc($border-radius - $border-width);
+  }
+}</code></pre>
+        </div>
+
+        <!-- Code snippet 2 -->
+        <div>
+          <span style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; color: #a78bfa;">Applying the Mixin (<code>style.scss</code>)</span>
+          <pre style="background: rgba(255, 255, 255, 0.05); padding: 1.25rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.825rem; overflow-x: auto; margin: 0; line-height: 1.5; color: #cbd5e1;"><code>@use '../../../scss/mixins';
+
+.gradient-card-thick {
+  // Setup thick custom rotating colors
+  @include mixins.gradient-border-animation(
+    $border-width: 4px,
+    $gradient: conic-gradient(#f59e0b, #ef4444, #f59e0b),
+    $animation-duration: 8s,
+    $background-color: #111827
+  );
+}</code></pre>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
