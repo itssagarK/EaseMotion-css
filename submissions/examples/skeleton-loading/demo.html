@@ -1,163 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skeleton Loading Animation</title>
-  <meta name="description" content="Interactive demo of skeleton loading placeholders with shimmer animation for content loading states.">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EaseMotion CSS — Skeleton Loading Component Showcase</title>
+  <meta name="description" content="Interactive demo showcasing the EaseMotion CSS skeleton loading patterns, cards, text lines, and transition animations." />
+  
+  <!-- EaseMotion CSS Core -->
+  <link rel="stylesheet" href="../../../easemotion.min.css" />
+  
+  <!-- Custom Style Modifications -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body>
+<body class="ease-fade-in">
 
-  <header>
-    <h1>Skeleton Loading</h1>
-    <p class="subtitle">Shimmer placeholders for loading content — profile, article, stats &amp; list variants</p>
-  </header>
+  <div class="showcase-container">
+    <!-- Header -->
+    <div class="ease-flex ease-justify-between ease-items-center ease-mb-8">
+      <div>
+        <span class="ease-badge ease-badge-info ease-uppercase ease-font-bold">Feedback Component</span>
+        <h1 style="margin: var(--ease-space-2) 0 0; font-weight: 800; font-size: 2rem; color: var(--heading-color);">Skeleton Loading</h1>
+      </div>
+      <span class="ease-badge ease-badge-warning ease-font-bold">GSSoC-2026</span>
+    </div>
 
-  <div class="controls">
-    <button class="btn" id="btn-load">Simulate Loading</button>
-    <button class="btn btn-outline" id="btn-reset">Reset</button>
+    <p class="ease-text-muted ease-mb-8" style="line-height: 1.6;">
+      Skeleton loading screens display a placeholder preview of content structure while data is loading, optimizing perceived wait times. This showcase displays standard layout skeletons, multi-line text blocks, and an interactive state simulator.
+    </p>
+
+    <!-- Section 1: Core Skeleton Blocks -->
+    <div class="ease-card ease-card-outlined ease-mb-6">
+      <div class="ease-card-header">
+        <h3 style="margin: 0; font-weight: 700; color: var(--heading-color);">1. Core Skeleton Blocks</h3>
+        <span class="ease-text-muted ease-text-xs">Primitive placeholder block shapes and sizes</span>
+      </div>
+      <div class="ease-card-body ease-stack-lg">
+        
+        <!-- Text lines -->
+        <div>
+          <span class="ease-text-xs ease-text-muted ease-block ease-mb-2">Multi-line Text (varying widths)</span>
+          <div class="ease-stack-sm" style="max-width: 480px;">
+            <div class="ease-skeleton ease-skeleton-text"></div>
+            <div class="ease-skeleton ease-skeleton-text" style="width: 85%;"></div>
+            <div class="ease-skeleton ease-skeleton-text" style="width: 60%;"></div>
+          </div>
+        </div>
+
+        <!-- Circle Avatar -->
+        <div>
+          <span class="ease-text-xs ease-text-muted ease-block ease-mb-2">Circle / Avatar (<code>.ease-skeleton-circle</code>)</span>
+          <div class="ease-skeleton ease-skeleton-circle" style="width: 48px; height: 48px;"></div>
+        </div>
+
+        <!-- Height sizes -->
+        <div class="ease-grid ease-grid-cols-2 ease-gap-4">
+          <div>
+            <span class="ease-text-xs ease-text-muted ease-block ease-mb-2">Small Height (<code>.ease-skeleton-sm</code>)</span>
+            <div class="ease-skeleton ease-skeleton-sm" style="width: 100%;"></div>
+          </div>
+          <div>
+            <span class="ease-text-xs ease-text-muted ease-block ease-mb-2">Large Height (<code>.ease-skeleton-lg</code>)</span>
+            <div class="ease-skeleton ease-skeleton-lg" style="width: 100%;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Section 2: Interactive Content Loading Simulator -->
+    <div class="ease-card ease-card-outlined">
+      <div class="ease-card-header ease-flex ease-justify-between ease-items-center">
+        <div>
+          <h3 style="margin: 0; font-weight: 700; color: var(--heading-color);">2. Interactive Load Simulator</h3>
+          <span class="ease-text-muted ease-text-xs">Switch states to preview placeholder transitions</span>
+        </div>
+        
+        <!-- Toggle button -->
+        <button class="ease-btn ease-btn-primary ease-btn-sm ease-btn-hover" id="simulator-toggle-btn" onclick="toggleLoadingState()">
+          <span>Simulate Load</span>
+        </button>
+      </div>
+      <div class="ease-card-body">
+        
+        <!-- SKELETON STATE (Visible by default) -->
+        <div class="skeleton-grid-2" id="state-skeletons">
+          <!-- Card Skeleton 1 -->
+          <div class="ease-card ease-card-flat stylist-card" style="padding: var(--ease-space-4);">
+            <!-- Image placeholder -->
+            <div class="ease-skeleton ease-skeleton-image ease-mb-4"></div>
+            <!-- Header layout -->
+            <div class="ease-flex ease-gap-3 ease-items-center ease-mb-4">
+              <div class="ease-skeleton ease-skeleton-avatar"></div>
+              <div class="ease-skeleton ease-skeleton-text" style="width: 50%;"></div>
+            </div>
+            <!-- Body lines -->
+            <div class="ease-stack-sm">
+              <div class="ease-skeleton ease-skeleton-text"></div>
+              <div class="ease-skeleton ease-skeleton-text" style="width: 70%;"></div>
+            </div>
+          </div>
+
+          <!-- Card Skeleton 2 -->
+          <div class="ease-card ease-card-flat stylist-card" style="padding: var(--ease-space-4);">
+            <!-- Image placeholder -->
+            <div class="ease-skeleton ease-skeleton-image ease-mb-4"></div>
+            <!-- Header layout -->
+            <div class="ease-flex ease-gap-3 ease-items-center ease-mb-4">
+              <div class="ease-skeleton ease-skeleton-avatar"></div>
+              <div class="ease-skeleton ease-skeleton-text" style="width: 50%;"></div>
+            </div>
+            <!-- Body lines -->
+            <div class="ease-stack-sm">
+              <div class="ease-skeleton ease-skeleton-text"></div>
+              <div class="ease-skeleton ease-skeleton-text" style="width: 70%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOADED STATE (Hidden by default) -->
+        <div class="skeleton-grid-2 loading-hidden" id="state-loaded-content">
+          <!-- Real Card 1 -->
+          <div class="real-card ease-fade-in">
+            <div class="real-card-image">AC Service</div>
+            <div class="real-card-body">
+              <div class="ease-flex ease-gap-3 ease-items-center">
+                <div class="ease-center" style="width: 32px; height: 32px; background: rgba(30,58,138,0.1); border-radius: 50%; font-size: 0.8rem; font-weight: bold; color: var(--ease-color-primary);">A</div>
+                <h4 style="margin: 0; font-weight: 700; color: var(--heading-color);">Air Conditioning Repair</h4>
+              </div>
+              <p class="ease-text-muted ease-text-xs" style="margin: var(--ease-space-2) 0 0;">
+                Professional diagnostics, same-day dispatch windows, and licensed repairs for central air conditioners.
+              </p>
+            </div>
+          </div>
+
+          <!-- Real Card 2 -->
+          <div class="real-card ease-fade-in">
+            <div class="real-card-image" style="background: linear-gradient(135deg, var(--ease-color-secondary) 0%, #ec4899 100%);">Wardrobe edit</div>
+            <div class="real-card-body">
+              <div class="ease-flex ease-gap-3 ease-items-center">
+                <div class="ease-center" style="width: 32px; height: 32px; background: rgba(30,58,138,0.1); border-radius: 50%; font-size: 0.8rem; font-weight: bold; color: var(--ease-color-primary);">E</div>
+                <h4 style="margin: 0; font-weight: 700; color: var(--heading-color);">Closet Audit Session</h4>
+              </div>
+              <p class="ease-text-muted ease-text-xs" style="margin: var(--ease-space-2) 0 0;">
+                Curated closet auditing, color alignment testing, and wardrobe combinations organization.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
-  <div class="demo-grid">
-
-    <!-- Profile Card -->
-    <div class="card" id="profile-card">
-      <div class="skeleton-content" id="profile-skeleton">
-        <div class="profile-skeleton">
-          <div class="skeleton skeleton-circle avatar"></div>
-          <div class="lines">
-            <div class="skeleton line line-lg"></div>
-            <div class="skeleton line line-xs"></div>
-          </div>
-        </div>
-        <div class="skeleton line line-sm mb-1"></div>
-        <div class="skeleton line"></div>
-      </div>
-      <div class="real-content" id="profile-real">
-        <div class="profile-skeleton">
-          <div class="real-avatar">JD</div>
-          <div>
-            <div class="real-name">Jane Doe</div>
-            <div class="real-role">Senior Product Designer</div>
-          </div>
-        </div>
-        <p class="real-desc" style="margin-top: 0.75rem;">
-          Passionate about crafting intuitive user experiences with a focus on motion design.
-        </p>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.75rem;">Profile Card</p>
-    </div>
-
-    <!-- Article Card -->
-    <div class="card" id="article-card">
-      <div class="skeleton-content" id="article-skeleton">
-        <div class="skeleton image-block"></div>
-        <div class="skeleton line line-lg mb-1"></div>
-        <div class="skeleton line mb-1"></div>
-        <div class="skeleton line line-sm"></div>
-      </div>
-      <div class="real-content" id="article-real">
-        <div class="real-img">📸 Image Placeholder</div>
-        <div class="real-title" style="margin-top: 1rem;">Getting Started with CSS Animations</div>
-        <p class="real-desc" style="margin-top: 0.3rem;">
-          A comprehensive guide to creating smooth, performant animations using modern CSS techniques.
-        </p>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.75rem;">Article Card</p>
-    </div>
-
-    <!-- Stats Card -->
-    <div class="card" id="stats-card">
-      <div class="skeleton-content" id="stats-skeleton">
-        <div class="stat-skeleton">
-          <div class="skeleton stat-value"></div>
-          <div class="skeleton stat-label"></div>
-          <div class="skeleton stat-bar"></div>
-        </div>
-      </div>
-      <div class="real-content" id="stats-real">
-        <div class="real-stat-value">12,847</div>
-        <div class="real-stat-label">Total Active Users</div>
-        <div class="real-stat-bar" style="margin-top: 0.6rem;"></div>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.75rem;">Stats Card</p>
-    </div>
-
-    <!-- List Items -->
-    <div class="card" id="list-card">
-      <div class="skeleton-content" id="list-skeleton">
-        <div class="list-skeleton">
-          <div class="list-item-skeleton">
-            <div class="skeleton skeleton-circle list-icon"></div>
-            <div style="flex:1; display:flex; flex-direction:column; gap:0.35rem;">
-              <div class="skeleton line"></div>
-              <div class="skeleton line line-xs"></div>
-            </div>
-          </div>
-          <div class="list-item-skeleton">
-            <div class="skeleton skeleton-circle list-icon"></div>
-            <div style="flex:1; display:flex; flex-direction:column; gap:0.35rem;">
-              <div class="skeleton line"></div>
-              <div class="skeleton line line-xs"></div>
-            </div>
-          </div>
-          <div class="list-item-skeleton">
-            <div class="skeleton skeleton-circle list-icon"></div>
-            <div style="flex:1; display:flex; flex-direction:column; gap:0.35rem;">
-              <div class="skeleton line"></div>
-              <div class="skeleton line line-xs"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="real-content" id="list-real">
-        <div class="real-list-item">
-          <div class="real-list-icon">📁</div>
-          <div>
-            <div class="real-list-text">Project Proposal</div>
-            <div class="real-list-meta">2.4 MB · Updated 2 hrs ago</div>
-          </div>
-        </div>
-        <div class="real-list-item">
-          <div class="real-list-icon">📄</div>
-          <div>
-            <div class="real-list-text">Design System Spec</div>
-            <div class="real-list-meta">1.1 MB · Updated 5 hrs ago</div>
-          </div>
-        </div>
-        <div class="real-list-item">
-          <div class="real-list-icon">🖼️</div>
-          <div>
-            <div class="real-list-text">Brand Assets v3</div>
-            <div class="real-list-meta">8.7 MB · Updated 1 day ago</div>
-          </div>
-        </div>
-      </div>
-      <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.75rem;">List Items</p>
-    </div>
-
-  </div>
-
+  <!-- Simulation script -->
   <script>
-    document.getElementById('btn-load').addEventListener('click', function () {
-      document.querySelectorAll('.skeleton-content').forEach(function (el) {
-        el.classList.add('hidden');
-      });
-      document.querySelectorAll('.real-content').forEach(function (el) {
-        el.classList.add('active');
-      });
-    });
+    let isLoading = true;
 
-    document.getElementById('btn-reset').addEventListener('click', function () {
-      document.querySelectorAll('.skeleton-content').forEach(function (el) {
-        el.classList.remove('hidden');
-      });
-      document.querySelectorAll('.real-content').forEach(function (el) {
-        el.classList.remove('active');
-      });
-    });
+    function toggleLoadingState() {
+      const toggleBtn = document.getElementById('simulator-toggle-btn');
+      const skeletons = document.getElementById('state-skeletons');
+      const content = document.getElementById('state-loaded-content');
+
+      if (isLoading) {
+        // Change button to spinner simulation or reset action
+        toggleBtn.querySelector('span').textContent = 'Reset State';
+        skeletons.classList.add('loading-hidden');
+        content.classList.remove('loading-hidden');
+        isLoading = false;
+      } else {
+        // Reset to skeletons
+        toggleBtn.querySelector('span').textContent = 'Simulate Load';
+        skeletons.classList.remove('loading-hidden');
+        content.classList.add('loading-hidden');
+        isLoading = true;
+      }
+    }
   </script>
-
 </body>
 </html>

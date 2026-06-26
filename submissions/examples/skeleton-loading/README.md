@@ -1,39 +1,50 @@
-# Skeleton Loading Animation
+# EaseMotion CSS — Skeleton Loading Component Showcase
 
-This submission implements a skeleton loading placeholder component with shimmer animation for content loading states (Issue **#14157**).
+A premium, interactive showcase displaying the **EaseMotion CSS** Skeleton loading screen patterns.
 
-## What It Does
+## Showcase Features
 
-Provides skeleton loading placeholders using a CSS shimmer animation. When content is loading, skeleton shapes smoothly animate with a moving gradient to indicate progress. Once loaded, the skeletons transition to real content.
+*   **Multi-line Text Placeholder Grids**: Custom vertical stacks showing staggered widths matching realistic paragraphs.
+*   **Circle Avatar Placeholder**: Displays rounded profile picture placeholders using `.ease-skeleton-circle`.
+*   **Size Height Options**: Previews `.ease-skeleton-sm` and `.ease-skeleton-lg` height modifications.
+*   **Structured Card Loading Patterns**: Outlines a compose layout card using image placeholders, avatar circles, and title/subtitle text lines.
+*   **Interactive Simulation Mode**: Live JavaScript simulator allowing you to toggle between the shimmer skeleton states and the fully loaded, styled HTML card items.
 
-## Variants
+---
 
-| Variant | Description |
-|---------|-------------|
-| `skeleton` | Base class — text line placeholder |
-| `skeleton-circle` | Circular placeholder (avatars, icons) |
-| `skeleton-card` | Card-shaped placeholder |
-| `.line` | Text line with variants `.line-sm` (50%), `.line-xs` (35%), `.line-lg` (18px height) |
-| `.image-block` | Rectangular image placeholder |
+## EaseMotion CSS Classes Showcased
 
-## Usage
+### Layout & Spacing
+*   `.ease-flex` — Standard display flex.
+*   `.ease-justify-between` — Aligns header controls.
+*   `.ease-items-center` / `.ease-items-start` — Vertically aligns content items.
+*   `.ease-gap-2` / `.ease-gap-3` / `.ease-gap-4` — Elements spacing.
+*   `.ease-grid` / `.ease-grid-cols-2` — CSS Grid layouts.
+*   `.ease-stack-lg` / `.ease-stack-sm` — Flexbox stack layouts.
 
-```html
-<div class="skeleton" style="width: 100%; height: 14px;"></div>
-<div class="skeleton skeleton-circle" style="width: 56px; height: 56px;"></div>
-```
+### Components
 
-## Files
+#### Skeletons
+*   `.ease-skeleton` — Base block placeholder displaying animated shimmer.
+*   `.ease-skeleton-text` — Paragraph lines height configuration.
+*   `.ease-skeleton-circle` — Avatar/profile rounded shapes.
+*   `.ease-skeleton-sm` / `.ease-skeleton-lg` — Height variant modifiers.
+*   `.ease-skeleton-card` — Custom height block for full cards.
+*   `.ease-skeleton-avatar` — Size modifier for circular profiles.
+*   `.ease-skeleton-image` — Aspect ratio block matching visual images.
 
-- `demo.html` — Interactive showcase with profile, article, stats & list skeleton cards
-- `style.css` — Shimmer keyframes, skeleton classes, layout, real content styles
-- `README.md` — This documentation
+#### Cards
+*   `.ease-card` — Standard card layout container.
+*   `.ease-card-outlined` — Outlined border variant.
+*   `.ease-card-header` / `.ease-card-body` — Cards content organization sections.
+*   `.ease-card-flat` — Container background panel.
 
-## Features
+#### Buttons & Badges
+*   `.ease-btn` — Base button style properties.
+*   `.ease-btn-primary` — Solid color brand button.
+*   `.ease-btn-sm` — Small button size variant.
+*   `.ease-btn-hover` — Interactive scale-lift hover trigger.
+*   `.ease-badge` — Status indicators.
 
-- Smooth shimmer animation using `background-position`
-- Four skeleton contexts: profile, article, stats dashboard, file list
-- Interactive "Simulate Loading" / "Reset" toggle
-- `prefers-reduced-motion` support disables animation
-- Responsive grid layout
-- Dark theme design
+### Animations
+*   `.ease-fade-in` — Entrance loading animation.
