@@ -29,7 +29,7 @@ Provides clean, reusable SCSS mixins for:
 
 ## Usage Example
 ```scss
-@import "animated-border-draw-glow-keyframe-mixins";
+@import "scss-animated-border-draw-glow-keyframe-mixins";
 
 .card-draw-glow {
   background: white;
