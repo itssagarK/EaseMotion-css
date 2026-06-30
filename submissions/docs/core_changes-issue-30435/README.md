@@ -4,16 +4,17 @@ Pure CSS countdown timer with bar and ring variants. Uses `animation-duration` d
 
 ## Classes
 
-| Class | Purpose |
-|-------|---------|
-| `.ease-countdown` | Timer container |
-| `.ease-countdown-display` | Numeric display |
-| `.ease-countdown-bar` | Linear progress track |
-| `.ease-countdown-bar-fill` | Shrinking bar fill |
-| `.ease-countdown-ring` | Circular SVG container |
-| `.ease-countdown-ring-fill` | SVG arc (dashoffset animation) |
-| `.ease-countdown-ring-label` | Center label |
-| `.ease-countdown-sm` / `-lg` | Size variants |
+| Class                        | Purpose                                                         |
+| ---------------------------- | --------------------------------------------------------------- |
+| `.ease-countdown`            | Timer container                                                 |
+| `.ease-countdown-display`    | Numeric display                                                 |
+| `.ease-countdown-bar`        | Linear progress track                                           |
+| `.ease-countdown-bar-fill`   | Shrinking bar fill                                              |
+| `.ease-countdown-ring`       | Circular SVG container                                          |
+| `.ease-countdown-ring-fill`  | SVG arc (dashoffset animation)                                  |
+| `.ease-countdown-ring-label` | Center label                                                    |
+| `.ease-countdown-no-reduce`  | Bypasses prefers-reduced-motion override (for essential timers) |
+| `.ease-countdown-sm` / `-lg` | Size variants                                                   |
 
 ## CSS Variables
 
